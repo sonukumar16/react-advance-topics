@@ -1,0 +1,77 @@
+Life cycle manly dived into four Phases:- 
+1. Mounting :- When an instance of a component is being created and inserted into the DOM.
+2. Updating :- When a component is being re-rendered as a result of changes to either its props or state.
+3. Unmounting:- When a component is being removed from the DOM.
+4. Error Handling:- When there is an error during rendering, in a lifecyle method, or in the constructor of any child component. 
+
+Mounting :- constructor, static getDerivedStateFromProps, render and componentDidMount.
+Updating:- static getDerivedStateFromProps, shouldComponentUpdate, render, getSnapshotBeforeUpdate and componentDidUpdate
+Unmounting:- componentWillUnmount.
+Error Handling:- static getDerivedStateFromError and componentDidCatch
+
+                      *************** MOUNTING **************
+###(BY Order)       
+1. constructor(props) :-
+        a). A special function that will get called whenever a new component is created.
+        b). Initializing state and binding the event handlers
+        c). Do not cause side effects: Ex. HTTP requests.
+        d). super(props), Directly overwrite this.state.
+
+2. static getDerivedStateFromProps(props, state) :-  
+        a). When the state of the component depends on changes in props over time.
+        b). set the state
+        c). Do not cause sid effects Ex. HTTP requests.
+
+3. render() :- 
+        a). Only this method is request for a react class component.
+        b). Don't change the state or interact with DOM or make ajax calls.
+        c). Read props & state and return jsx
+        d). children components lifecyle methods are also executed.
+
+4. componentDidMount() :-
+        a). Invoked immediately after a component and all its children components have been rendered to the DOM.
+        b). Cause side effects: Eg. interact with the DOM or perform any ajax call to load data.
+
+                        *************** UPDATING **************
+### (BY ORDER)
+1. static getDerivedStateFromProps(props, state) :- 
+        a). Method is called every time a component is re-render
+        b). set state
+        c). Do not cause sid effects Ex. HTTP requests.
+
+2. shouldComponentUpdate(nextProps, nextState) :- 
+        a). Dictate if component should re-render or not.
+        b). Performance improvement, default behavior returns false, And we can check current state/props with update state/props           
+        c). Don't cause side effects. Ex. HTTP requests and calling setState method.
+
+3. render() :-      
+
+4. getSnapshotBeforeUpdate(prevProps, prevState) :- 
+        a). Called right before the changes from the virtual DOM are to be reflects in the DOM.
+        b). Capture some information from the DOM. Eg.:- You can read the user scroll position and after the update maintain the 
+            scroll position by doing the some calculation.
+        c). Method will either return null or return a value
+            Return value will be passed as the third parameter to next method (i.e.  componentDidUpdate)
+
+5. componentDidUpdate() :- 
+        a). Called after the render is finished in the re-render cycle.
+        b). cause side effects. 
+
+                        *************** UNMOUNTING **************   
+1.  componentWillUnmount() :- 
+        a). Method is invoked immediately before the component is unmounted and destroy.
+        b). Cancelling any network call , removing event handlers, Cancelling any subscriptions 
+            and also invalidating timers
+        c). Don't call setState method.
+
+                       *************** ERROR HANDLING **************
+1.getDerivedStateFromError(error) :-
+2. componentDidCatch(error, info) :-  
+
+When there is an error either during rendering, in a lifecyle method, or in the constructor of 
+any child component.
+
+Question :-  Diff b/w render phase and commit phase?
+Ans :- React DOM calculates the changes that needs to be committed to DOM, 
+while in commit phase, React DOM actually commits those changes. One of the major difference bw render phase
+and commit phase is that render phase can be called multiple times but commit phase is called only once for a change.
