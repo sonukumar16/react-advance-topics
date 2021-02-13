@@ -19,7 +19,7 @@
 *                               |                               |                           | 
 *  Related state Transitions?   |         No                    |      Yes                  |
 *                               |                               |                           |
-*  Business Login               |    No business logic          |  Complex business logic   |
+*  Business Logic               |    No business logic          |  Complex business logic   |
 *                               |                               |                           |
 *  Local vs global              |       Local                   |        Global             |
 *                               |                               |                           |
