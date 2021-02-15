@@ -5,7 +5,7 @@ Steps:-
   3. Only direct use consumer in your component
 
   Disadvantage:-
-  1. only one context will used with one parameter.
+  1. only one context will be used with one parameter.
 */
 import React, { Component } from "react";
 import ComponentC from "./ComponentC";
